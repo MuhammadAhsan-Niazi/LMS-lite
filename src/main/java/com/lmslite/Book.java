@@ -26,4 +26,24 @@ public class Book {
         this.totalCopies = totalCopies;
         this.availableCopies = totalCopies;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public int getTotalCopies() {
+        return totalCopies;
+    }
+
+    public int getAvailableCopies() {
+        return availableCopies;
+    }
 }
