@@ -19,7 +19,12 @@ public class Book {
     private final int totalCopies;
     private int availableCopies;
 
-    public Book(String title, String author, String isbn, int totalCopies) {
+        public Book(String title, String author, String isbn, int totalCopies) {
+        validateTitle(title);
+        validateAuthor(author);
+        validateIsbn(isbn);
+        validateTotalCopies(totalCopies);
+
         this.title = title;
         this.author = author;
         this.isbn = isbn;
@@ -27,23 +32,27 @@ public class Book {
         this.availableCopies = totalCopies;
     }
 
-    public String getTitle() {
-        return title;
+    private static void validateTitle(String title) {
+        if (title == null || title.trim().isEmpty()) {
+            throw new InvalidBookDataException("Title must not be empty.");
+        }
     }
 
-    public String getAuthor() {
-        return author;
+    private static void validateAuthor(String author) {
+        if (author == null || author.trim().isEmpty()) {
+            throw new InvalidBookDataException("Author must not be empty.");
+        }
     }
 
-    public String getIsbn() {
-        return isbn;
+    private static void validateIsbn(String isbn) {
+        if (isbn == null || isbn.trim().isEmpty()) {
+            throw new InvalidBookDataException("ISBN must not be empty.");
+        }
     }
 
-    public int getTotalCopies() {
-        return totalCopies;
-    }
-
-    public int getAvailableCopies() {
-        return availableCopies;
+    private static void validateTotalCopies(int totalCopies) {
+        if (totalCopies < 0) {
+            throw new InvalidBookDataException("Total copies cannot be negative.");
+        }
     }
 }
