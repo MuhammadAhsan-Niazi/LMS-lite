@@ -19,7 +19,7 @@ public class Book {
     private final int totalCopies;
     private int availableCopies;
 
-        public Book(String title, String author, String isbn, int totalCopies) {
+    public Book(String title, String author, String isbn, int totalCopies) {
         validateTitle(title);
         validateAuthor(author);
         validateIsbn(isbn);
@@ -54,5 +54,25 @@ public class Book {
         if (totalCopies < 0) {
             throw new InvalidBookDataException("Total copies cannot be negative.");
         }
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public int getTotalCopies() {
+        return totalCopies;
+    }
+
+    public int getAvailableCopies() {
+        return availableCopies;
     }
 }
