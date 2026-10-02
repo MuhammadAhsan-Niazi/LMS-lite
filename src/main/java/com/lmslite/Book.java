@@ -76,16 +76,16 @@ public class Book {
         return availableCopies;
     }
 
-    public void decreaseAvailableCopies() {
+        public void decreaseAvailableCopies() {
         if (availableCopies <= 0) {
-            throw new InvalidBookDataException("No available copies to borrow.");
+            throw new InvalidLoanException("No available copies to borrow.");
         }
         availableCopies--;
     }
 
     public void increaseAvailableCopies() {
         if (availableCopies >= totalCopies) {
-            throw new InvalidBookDataException("Cannot exceed total copies.");
+            throw new InvalidLoanException("Cannot exceed total copies.");
         }
         availableCopies++;
     }
