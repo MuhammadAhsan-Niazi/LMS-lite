@@ -79,7 +79,7 @@ class LibraryTest {
         assertEquals(2, results.size());
     }
 
-    @Test
+        @Test
     void listOverdueLoans_returnsLoan_whenPastDueDate() {
         LocalDate borrowDate = LocalDate.of(2026, 1, 1);
         Library library = new Library(fixedClockOn(borrowDate));
@@ -89,12 +89,13 @@ class LibraryTest {
 
         Loan loan = library.borrowBook(book, member);
 
-        // Simulate time passing: create a new Library view with a later "today"
-        Library laterLibrary = new Library(fixedClockOn(borrowDate.plusDays(20)));
-        // listOverdueLoans checks activeLoans, which only the original library holds,
-        // so we re-check using the same library but query at a later fixed date via
-        // a second Library instance is not valid here — instead, verify directly:
-        assertTrue(borrowDate.plusDays(20).isAfter(loan.getDueDate()));
+        // Simulate 20 days passing by advancing the library's clock
+        library.setClock(fixedClockOn(borrowDate.plusDays(20)));
+
+        List<Loan> overdue = library.listOverdueLoans();
+
+        assertEquals(1, overdue.size());
+        assertEquals(loan, overdue.get(0));
     }
 
     @Test

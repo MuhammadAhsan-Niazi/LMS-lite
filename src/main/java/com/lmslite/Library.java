@@ -17,11 +17,20 @@ import java.util.List;
  */
 public class Library {
 
-    private final Clock clock;
+    private Clock clock;
     private final List<Book> catalog = new ArrayList<>();
     private final List<Loan> activeLoans = new ArrayList<>();
 
     public Library(Clock clock) {
+        this.clock = clock;
+    }
+
+    /**
+     * Allows the clock to be replaced, primarily so tests can simulate
+     * time passing (e.g. to check overdue status) without needing a
+     * separate Library instance.
+     */
+    public void setClock(Clock clock) {
         this.clock = clock;
     }
 
