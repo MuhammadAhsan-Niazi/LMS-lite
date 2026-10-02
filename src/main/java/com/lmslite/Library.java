@@ -34,6 +34,11 @@ public class Library {
         this.clock = clock;
     }
 
+        /**
+     * Adds a book to the library catalog.
+     *
+     * @param book the book to add; must not be null
+     */
     public void addBook(Book book) {
         if (book == null) {
             throw new InvalidBookDataException("Book must not be null.");
