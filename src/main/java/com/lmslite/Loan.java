@@ -24,6 +24,13 @@ public class Loan {
     private final LocalDate dueDate;
     private LocalDate returnDate;
 
+        /**
+     * Creates a new Loan with a due date 14 days from the borrow date.
+     *
+     * @param book the book being borrowed
+     * @param member the member borrowing the book
+     * @param borrowDate the date the loan begins
+     */
     public Loan(Book book, Member member, LocalDate borrowDate) {
         this.book = book;
         this.member = member;

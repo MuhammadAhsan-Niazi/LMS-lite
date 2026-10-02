@@ -22,7 +22,8 @@ public class Main {
         System.out.println("Catalog initialized with 2 books.");
 
         Member member = new Member("Ali Khan", "M001");
-        System.out.println("Registered member: " + member.getName() + " (" + member.getMemberId() + ")");
+        String memberInfo = "Registered member: " + member.getName() + " (" + member.getMemberId() + ")";
+        System.out.println(memberInfo);
 
         System.out.println("\nSearching for 'clean':");
         List<Book> results = library.searchByTitle("clean");

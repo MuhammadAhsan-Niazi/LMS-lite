@@ -19,6 +19,14 @@ public class Book {
     private final int totalCopies;
     private int availableCopies;
 
+        /**
+     * Creates a new Book after validating all required fields.
+     *
+     * @param title the book's title, must not be empty
+     * @param author the book's author, must not be empty
+     * @param isbn the book's ISBN, must not be empty
+     * @param totalCopies the total number of copies owned, must be >= 0
+     */
     public Book(String title, String author, String isbn, int totalCopies) {
         validateTitle(title);
         validateAuthor(author);

@@ -3,7 +3,7 @@ package com.lmslite;
 /**
  * Represents a library member.
  *
- * Pre-conditions for construction:
+ * <p>Pre-conditions for construction:
  *   - name must not be null or empty
  *   - memberId must not be null or empty
  * Post-conditions:
