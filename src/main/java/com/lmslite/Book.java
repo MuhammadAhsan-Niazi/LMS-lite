@@ -75,4 +75,18 @@ public class Book {
     public int getAvailableCopies() {
         return availableCopies;
     }
+
+    public void decreaseAvailableCopies() {
+        if (availableCopies <= 0) {
+            throw new InvalidBookDataException("No available copies to borrow.");
+        }
+        availableCopies--;
+    }
+
+    public void increaseAvailableCopies() {
+        if (availableCopies >= totalCopies) {
+            throw new InvalidBookDataException("Cannot exceed total copies.");
+        }
+        availableCopies++;
+    }
 }

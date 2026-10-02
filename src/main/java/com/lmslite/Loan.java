@@ -22,6 +22,7 @@ public class Loan {
     private final Member member;
     private final LocalDate borrowDate;
     private final LocalDate dueDate;
+    private LocalDate returnDate;
 
     public Loan(Book book, Member member, LocalDate borrowDate) {
         this.book = book;
@@ -38,6 +39,10 @@ public class Loan {
         return dueDate;
     }
 
+    public LocalDate getReturnDate() {
+        return returnDate;
+    }
+
     public double calculateLateFee(LocalDate returnDate) {
         if (!isReturnedLate(returnDate)) {
             return 0.0;
@@ -52,5 +57,11 @@ public class Loan {
 
     private long calculateDaysLate(LocalDate returnDate) {
         return ChronoUnit.DAYS.between(dueDate, returnDate);
+    }
+
+    public double returnBook(LocalDate actualReturnDate) {
+        this.returnDate = actualReturnDate;
+        book.increaseAvailableCopies();
+        return calculateLateFee(actualReturnDate);
     }
 }
