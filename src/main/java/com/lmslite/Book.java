@@ -76,7 +76,7 @@ public class Book {
         return availableCopies;
     }
 
-        public void decreaseAvailableCopies() {
+    public void decreaseAvailableCopies() {
         if (availableCopies <= 0) {
             throw new InvalidLoanException("No available copies to borrow.");
         }
@@ -88,5 +88,13 @@ public class Book {
             throw new InvalidLoanException("Cannot exceed total copies.");
         }
         availableCopies++;
+    }
+
+    public boolean matchesTitle(String query) {
+        return query != null && title.toLowerCase().contains(query.toLowerCase());
+    }
+
+    public boolean matchesAuthor(String query) {
+        return query != null && author.toLowerCase().contains(query.toLowerCase());
     }
 }
