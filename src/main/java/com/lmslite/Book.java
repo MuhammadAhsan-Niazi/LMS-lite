@@ -75,4 +75,26 @@ public class Book {
     public int getAvailableCopies() {
         return availableCopies;
     }
+
+    public void decreaseAvailableCopies() {
+        if (availableCopies <= 0) {
+            throw new InvalidLoanException("No available copies to borrow.");
+        }
+        availableCopies--;
+    }
+
+    public void increaseAvailableCopies() {
+        if (availableCopies >= totalCopies) {
+            throw new InvalidLoanException("Cannot exceed total copies.");
+        }
+        availableCopies++;
+    }
+
+    public boolean matchesTitle(String query) {
+        return query != null && title.toLowerCase().contains(query.toLowerCase());
+    }
+
+    public boolean matchesAuthor(String query) {
+        return query != null && author.toLowerCase().contains(query.toLowerCase());
+    }
 }
