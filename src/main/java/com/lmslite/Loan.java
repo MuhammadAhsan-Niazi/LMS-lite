@@ -1,6 +1,7 @@
 package com.lmslite;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Represents a loan of a Book to a Member.
@@ -38,14 +39,18 @@ public class Loan {
     }
 
     public double calculateLateFee(LocalDate returnDate) {
-        long daysLate = calculateDaysLate(returnDate);
-        if (daysLate <= 0) {
+        if (!isReturnedLate(returnDate)) {
             return 0.0;
         }
+        long daysLate = calculateDaysLate(returnDate);
         return daysLate * LATE_FEE_PER_DAY;
     }
 
+    private boolean isReturnedLate(LocalDate returnDate) {
+        return returnDate.isAfter(dueDate);
+    }
+
     private long calculateDaysLate(LocalDate returnDate) {
-        return java.time.temporal.ChronoUnit.DAYS.between(dueDate, returnDate);
+        return ChronoUnit.DAYS.between(dueDate, returnDate);
     }
 }
