@@ -15,6 +15,7 @@ import java.time.LocalDate;
 public class Loan {
 
     private static final int LOAN_PERIOD_DAYS = 14;
+    private static final double LATE_FEE_PER_DAY = 1.0;
 
     private final Book book;
     private final Member member;
@@ -37,6 +38,14 @@ public class Loan {
     }
 
     public double calculateLateFee(LocalDate returnDate) {
-        return 0.0;
+        long daysLate = calculateDaysLate(returnDate);
+        if (daysLate <= 0) {
+            return 0.0;
+        }
+        return daysLate * LATE_FEE_PER_DAY;
+    }
+
+    private long calculateDaysLate(LocalDate returnDate) {
+        return java.time.temporal.ChronoUnit.DAYS.between(dueDate, returnDate);
     }
 }
