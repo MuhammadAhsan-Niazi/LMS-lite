@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lms-lite</a> &gt; <a href="index.source.html" class="el_package">com.lmslite</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package com.lmslite;
+
+import java.time.Clock;
+import java.time.LocalDate;
+import java.util.List;
+
+/**
+ * Simple driver program demonstrating LMS-Lite's core functionality:
+ * adding books, registering members, borrowing, returning, and
+ * listing overdue loans.
+ */
+<span class="nc" id="L12">public class Main {</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L15">        Library library = new Library(Clock.systemDefaultZone());</span>
+
+<span class="nc" id="L17">        Book book1 = new Book(&quot;Clean Code&quot;, &quot;Robert C. Martin&quot;, &quot;9780132350884&quot;, 2);</span>
+<span class="nc" id="L18">        Book book2 = new Book(&quot;The Pragmatic Programmer&quot;, &quot;Andrew Hunt&quot;, &quot;9780135957059&quot;, 1);</span>
+<span class="nc" id="L19">        library.addBook(book1);</span>
+<span class="nc" id="L20">        library.addBook(book2);</span>
+
+<span class="nc" id="L22">        System.out.println(&quot;Catalog initialized with 2 books.&quot;);</span>
+
+<span class="nc" id="L24">        Member member = new Member(&quot;Ali Khan&quot;, &quot;M001&quot;);</span>
+<span class="nc" id="L25">        String memberInfo = &quot;Registered member: &quot; + member.getName() + &quot; (&quot; + member.getMemberId() + &quot;)&quot;;</span>
+<span class="nc" id="L26">        System.out.println(memberInfo);</span>
+
+<span class="nc" id="L28">        System.out.println(&quot;\nSearching for 'clean':&quot;);</span>
+<span class="nc" id="L29">        List&lt;Book&gt; results = library.searchByTitle(&quot;clean&quot;);</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        for (Book b : results) {</span>
+<span class="nc" id="L31">            System.out.println(&quot;  Found: &quot; + b.getTitle() + &quot; by &quot; + b.getAuthor());</span>
+<span class="nc" id="L32">        }</span>
+
+<span class="nc" id="L34">        System.out.println(&quot;\nBorrowing 'Clean Code' for &quot; + member.getName() + &quot;...&quot;);</span>
+<span class="nc" id="L35">        Loan loan = library.borrowBook(book1, member);</span>
+<span class="nc" id="L36">        System.out.println(&quot;  Due date: &quot; + loan.getDueDate());</span>
+<span class="nc" id="L37">        System.out.println(&quot;  Available copies left: &quot; + book1.getAvailableCopies());</span>
+
+<span class="nc" id="L39">        System.out.println(&quot;\nReturning 'Clean Code' on time...&quot;);</span>
+<span class="nc" id="L40">        double fee = library.returnBook(loan);</span>
+<span class="nc" id="L41">        System.out.println(&quot;  Late fee: $&quot; + fee);</span>
+<span class="nc" id="L42">        System.out.println(&quot;  Available copies now: &quot; + book1.getAvailableCopies());</span>
+
+<span class="nc" id="L44">        System.out.println(&quot;\nChecking for overdue loans...&quot;);</span>
+<span class="nc" id="L45">        List&lt;Loan&gt; overdue = library.listOverdueLoans();</span>
+<span class="nc" id="L46">        System.out.println(&quot;  Overdue loans: &quot; + overdue.size());</span>
+
+<span class="nc" id="L48">        System.out.println(&quot;\nDemo complete.&quot;);</span>
+<span class="nc" id="L49">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

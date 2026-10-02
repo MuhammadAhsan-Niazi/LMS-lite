@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+lms-lite,com.lmslite,InvalidLoanException,0,4,0,0,0,2,0,1,0,1
+lms-lite,com.lmslite,Book,1,142,3,23,0,38,3,24,0,14
+lms-lite,com.lmslite,Loan,3,59,0,2,1,17,1,8,1,7
+lms-lite,com.lmslite,InvalidBookDataException,0,4,0,0,0,2,0,1,0,1
+lms-lite,com.lmslite,Library,46,139,9,13,10,39,8,12,1,8
+lms-lite,com.lmslite,Member,0,43,0,8,0,14,0,9,0,5
+lms-lite,com.lmslite,InvalidMemberDataException,0,4,0,0,0,2,0,1,0,1
+lms-lite,com.lmslite,Main,125,0,2,0,28,0,3,0,2,0
