@@ -75,4 +75,19 @@ class LoanTest {
 
         assertEquals(0.0, fee, 0.001);
     }
+
+        @Test
+    void returnBook_increasesAvailableCopies_whenCalled() {
+        Book book = new Book("Clean Code", "Robert C. Martin", "9780132350884", 2);
+        book.decreaseAvailableCopies();
+        Member member = new Member("Ali Khan", "M001");
+        LocalDate borrowDate = LocalDate.of(2026, 1, 1);
+        Loan loan = new Loan(book, member, borrowDate);
+
+        int before = book.getAvailableCopies();
+        loan.returnBook(LocalDate.of(2026, 1, 10));
+        int after = book.getAvailableCopies();
+
+        assertEquals(before + 1, after);
+    }
 }
