@@ -25,7 +25,11 @@ public class Loan {
         this.book = book;
         this.member = member;
         this.borrowDate = borrowDate;
-        this.dueDate = borrowDate.plusDays(LOAN_PERIOD_DAYS);
+        this.dueDate = calculateDueDate(borrowDate);
+    }
+
+    private static LocalDate calculateDueDate(LocalDate borrowDate) {
+        return borrowDate.plusDays(LOAN_PERIOD_DAYS);
     }
 
     public LocalDate getDueDate() {
